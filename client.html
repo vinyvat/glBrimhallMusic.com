@@ -7,12 +7,65 @@
         <meta name="author" content="">
         <title>glBrimhallMusic.com</title>
         <link href="style.css" rel="stylesheet">
+    </head>
+    <body onLoad="onBodyLoad();">
+        <header>
+            <nav>
+                <a name="a_title">glBrimhall</a>
+                <a name="a_music" href="#music" onclick="loadMusicPage();">Music</a>
+                <a name="a_events" href="#events" onclick="loadEventsPage();">Events</a>
+                <a name="a_tech" href="#Tech" onclick="loadTechPage();">Tech</a>
+                <a name="a_lessons" href="#Lessons" onclick="loadLessonsPage();">Lessons</a>
+            </nav>
+        </header>
+        <div class="videoPlayer">
+           <img src="pics/youtube-kitten.jpg" onclick="onImageClick(this);"></img>
+        </div>
+        <div class="">
+            <ul class="videoList">
+                <li>
+                    <button id="but1" value="http://reidhall.com">New Composition 1. Performed 10/1/31 at Reid Hall, http://reidhall.com</button>
+                    <br>
+                </li>
+                <li>
+                    <button>Event1</button>
+                    <br>
+                </li>
+                <li>
+                    <button>Event1</button>
+                    <br>
+                </li>
+                <li>
+                    <button>Event1</button>
+                    <br>
+                </li>
+            </ul>
+        </div>
+        <footer class="pg-empty-placeholder"></footer>    
     <script>
 function onBodyLoad() {
     //var elem, style;
     //elem = document.querySelector('.backgroundEvents');
     //style = getComputedStyle(elem);
     loadEventsPage();
+}
+function onButtonClick(that) {
+    //var elem, style;
+    //elem = document.querySelector('.backgroundEvents');
+    //style = getComputedStyle(elem);
+    //alert('onImageClick: ' + that.toString());
+    var parent = that.parentNode.parentNode;
+    var div = document.createElement('div');
+    div.innerHTML = '<iframe src="' + 'https://www.youtube.com/embed/8HVWitAW-Qg?autoplay=1&cc_load_policy=1 frameborder="0" allowfullscreen' + '"></iframe>';
+    //iframe.frameborder="0";
+    //iframe.allowfullscreen=1;
+
+    parent.replaceChild(div, that.parentNode);
+    parent.removeChild(that.parentNode);
+    //iframe.src = iframe.src;
+    //parent.removeChild(that);
+    //var video = '<iframe src="'+ $(this).attr('data-video') +'"></iframe>';
+    //$(this).replaceWith(video);
 }
 function onImageClick(that) {
     //var elem, style;
@@ -62,41 +115,6 @@ function loadLessonsPage() {
     document.body.className = "backgroundBlack";
 }   
     </script>
-    </head>
-    <body onLoad="onBodyLoad();">
-        <header>
-            <nav>
-                <a name="a_title">glBrimhall</a>
-                <a name="a_music" href="#music" onclick="loadMusicPage();">Music</a>
-                <a name="a_events" href="#events" onclick="loadEventsPage();">Events</a>
-                <a name="a_tech" href="#Tech" onclick="loadTechPage();">Tech</a>
-                <a name="a_lessons" href="#Lessons" onclick="loadLessonsPage();">Lessons</a>
-            </nav>
-        </header>
-        <div class="videoPlayer">
-           <img src="pics/youtube-kitten.jpg" onclick="onImageClick(this);"></img>
-        </div>
-        <div class="">
-            <ul class="videoList">
-                <li>
-                    <button>Event1</button>
-                    <br>
-                </li>
-                <li>
-                    <button>Event1</button>
-                    <br>
-                </li>
-                <li>
-                    <button>Event1</button>
-                    <br>
-                </li>
-                <li>
-                    <button>Event1</button>
-                    <br>
-                </li>
-            </ul>
-        </div>
-        <footer class="pg-empty-placeholder"></footer>    
     </body>
 </html>
 
