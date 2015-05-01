@@ -1,0 +1,21 @@
+INSERT INTO Event
+   (
+   event_type,
+   event_name,
+   event_date,
+   event_place,
+   event_video,
+   event_pic,
+   event_url
+   )
+VALUES
+   ( 'EVENT', 'Wannabe Singer', '2015-07-31 10:30:00', 'Balboa Park', 'https://www.youtube.com/watch?feature=player_embedded&v=IChJ6eO3k48', 'wannabe-singer.jpg', NULL),
+   ( 'EVENT', 'Really Dating', '2015-07-28 08:30:00', 'Balboa Park', 'https://www.youtube.com/watch?feature=player_embedded&v=2pUG8Sw6KyU', 'really-dating.jpg', NULL),
+   ( 'EVENT', 'Malos Amigos', '2015-07-01 08:30:00', 'Balboa Park', 'https://www.youtube.com/watch?feature=player_embedded&v=-Z-6DmE7Ucs', 'malos-amigos.jpg', NULL),
+   ( 'EVENT', 'Ellen Tube', '2015-07-13 08:30:00', 'Balboa Park', 'https://www.youtube.com/watch?feature=player_embedded&v=P-WdrMLLpPg', 'ellen-tube.jpg', NULL),
+   ( 'MUSIC', 'Food Facts', '2015-02-31 08:30:00', 'Balboa Park', 'https://www.youtube.com/watch?feature=player_embedded&v=Ff07KdikxXE', 'food-facts.jpg', NULL),
+   ( 'MUSIC', 'Will It Deep Fry', '2015-05-22 08:30:00', 'Balboa Park', 'https://www.youtube.com/watch?feature=player_embedded&v=yTrIfkAb-_8', 'deep-fry.jpg', NULL),
+   ( 'TECH', 'Guys Girls', '2015-02-05 08:30:00', 'Balboa Park', 'https://www.youtube.com/watch?feature=player_embedded&v=iUTkAgWEH3M', '', NULL),
+   ( 'TECH', 'Avengers Ultron', '2015-04-10 08:30:00', 'Balboa Park', 'https://www.youtube.com/watch?feature=player_embedded&v=MZoO8QVMxkk', 'avengers-ultron.jpg', NULL),
+   ( 'TECH', 'Watch Novelas', '2015-03-12 08:30:00', 'Balboa Park', 'https://www.youtube.com/watch?feature=player_embedded&v=Eg1TCCa7dBA', 'watch-novelas.jpg', NULL),
+   ( 'LESSON', 'Blackbaud TV', '2015-10-31 08:30:00', 'Balboa Park', 'https://www.youtube.com/watch?feature=player_embedded&v=WOGmItnyTuM', 'blackbaud.jpg', NULL);
