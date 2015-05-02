@@ -1,6 +1,6 @@
 {
-  "name": "node-mysql",
-  "version": "0.0.1",
-  "dependencies": {
-    "mysql": "^2.5.4"
+  "dependencies" :
+  { "mysql" : "2.6.2"
+  , "hapi"  : "8.4.0"
   }
+}
