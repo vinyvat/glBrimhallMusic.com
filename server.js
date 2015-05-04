@@ -1,9 +1,55 @@
+// mysql
+var mysql     =    require('mysql');
+
+var pool      =    mysql.createPool({
+    connectionLimit : 100, //important
+    host     : 'localhost',
+    user     : 'root',
+    password : 'asdf',
+    database : 'musicsite',
+    debug    :  true
+});
+
+function handle_database(req,res) {
+    
+    pool.getConnection(function selectEvent(err,connection) {
+        if (err) {
+          connection.release();
+          res.json({"code" : 100, "status" : "Error in connection database"});
+          return;
+        }   
+
+        connection.on('error', function selectEventError(err) {      
+              connection.release();
+              res.json({"code" : 100, "status" : "Error in connection database"});
+              return;     
+        });
+
+        console.log('connected as id ' + connection.threadId);
+        
+        var event_type = req.params.event_type;
+        var sql = "SELECT event_id FROM Event WHERE event_type = ?";
+
+        console.log("SQL="+sql+event_type);
+
+        connection.query( sql, [event_type], function selectEventSql(err,rows,info) {
+            console.log("RSLT="+res.json(rows));
+            connection.release();
+            if(!err) {
+                res.json(rows);
+            }           
+        });
+  });
+}
+
+
+// hapi web-server
 var Hapi = require('hapi');
 
 // Create a server with a host and port
 var server = new Hapi.Server();
 server.connection({ 
-    host: '192.168.0.3', 
+    host: '127.0.0.1', 
     port: 8000 
 });
 
@@ -28,6 +74,15 @@ server.route({
     path:'/hello', 
     handler: function (request, reply) {
        reply('hello world');
+    }
+});
+
+// Routes for Even CRUD:
+server.route({
+    method: 'GET',
+    path:'/event/{event_type?}', 
+    handler: function (request, reply) {
+       handle_database(request, reply);
     }
 });
 
