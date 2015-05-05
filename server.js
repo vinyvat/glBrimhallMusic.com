@@ -15,29 +15,28 @@ function handle_database(req,res) {
     pool.getConnection(function selectEvent(err,connection) {
         if (err) {
           connection.release();
-          res.json({"code" : 100, "status" : "Error in connection database"});
-          return;
+          return res({"code" : 100, "status" : "Error in connection database"});
         }   
 
         connection.on('error', function selectEventError(err) {      
               connection.release();
-              res.json({"code" : 100, "status" : "Error in connection database"});
-              return;     
+              return res({"code" : 100, "status" : "Error in connection database"});
         });
 
         console.log('connected as id ' + connection.threadId);
         
         var event_type = req.params.event_type;
-        var sql = "SELECT event_id FROM Event WHERE event_type = ?";
+        var sql = "SELECT * FROM Event WHERE event_type = ?";
 
         console.log("SQL="+sql+event_type);
 
         connection.query( sql, [event_type], function selectEventSql(err,rows,info) {
-            console.log("RSLT="+res.json(rows));
+            //console.log("RSLT="+res.json(rows));
             connection.release();
             if(!err) {
-                res.json(rows);
-            }           
+                //return res(JSON.stringify(rows));
+                return res(rows);
+            }
         });
   });
 }
