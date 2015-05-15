@@ -7,7 +7,7 @@ var pool      =    mysql.createPool({
     user     : 'root',
     password : 'asdf',
     database : 'musicsite',
-    debug    :  true
+    debug    :  false
 });
 
 function handle_database(req,res) {
